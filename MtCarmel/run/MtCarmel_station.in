@@ -1,0 +1,13 @@
+# station location, lon, lat , z and elev
+GTSRCE MC1   LATLON  38.452702 -87.892303   0.0   0.113
+GTSRCE MC2   LATLON  38.543701 -87.874001   0.0   0.126
+GTSRCE MC4   LATLON  38.363201 -87.830200   0.0   0.128
+GTSRCE MC5   LATLON  38.479801 -87.766502   0.0   0.131
+
+# phases and arrival time uncertainty
+EQSTA MC1   P      GAU  0.0    GAU  0.0
+EQSTA MC2   P      GAU  0.0    GAU  0.0
+EQSTA MC4   P      GAU  0.0    GAU  0.0
+EQSTA MC5   P      GAU  0.0    GAU  0.0
+
+

@@ -1,0 +1,18 @@
+Networks (1):
+			Z3
+		Stations (10):
+			Z3.IU1 (Henson, IL), Guralp 1-c, 40 Hz
+			Z3.IU2 (Albion, IL)
+			Z3.IU3 (Allendale, IL)
+			Z3.IU4 (Bellmon, IL)
+			Z3.IU5 (Lancaster, IL)
+			Z3.IU6 (Mt. Carmel, IL)
+			Z3.MC1 (near USGS Mainshock), Guralp CMG6-TD, 3-c, 100 Hz
+			Z3.MC2 (between Bellmont and Maud, IL)
+			Z3.MC4 (near Browns, IL)
+			Z3.MC5 (near Patton, IL)
+		Channels (18):
+			Z3.IU1..BHZ, Z3.IU2..BHZ, Z3.IU3..BHZ, Z3.IU4..BHZ, Z3.IU5..BHZ, 
+			Z3.IU6..BHZ, Z3.MC1..HHZ, Z3.MC1..HHN, Z3.MC1..HHE, Z3.MC2..HHZ, 
+			Z3.MC2..HHN, Z3.MC2..HHE, Z3.MC4..HHZ, Z3.MC4..HHN, Z3.MC4..HHE, 
+			Z3.MC5..HHZ, Z3.MC5..HHN, Z3.MC5..HHE
