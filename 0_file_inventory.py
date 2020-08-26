@@ -34,18 +34,24 @@ def get_size(start_path = '.'):
 #=================================================================================================
 dir_main = f"/media/tgoebel/Data/seis/BlueMountain"
 dir_out  = f"{os.environ['HOME']}/projects/indSeism/BlueMountain/data/seis"
-file_out = 'BM_2019_2020_file_inventory.txt'
 fileType = 'CD11' # sac CD11 or mseed
 l_sta = [ 'BM%02d'%(i) for i in range(1, 11)]
 print( l_sta)
 #==============================0==================================================================
 #                         create time vector
 #=================================================================================================
-t1 = datetime.datetime(2018, 5, 1)
-t2 = datetime.datetime(2020, 8, 1)
+if fileType == 'CD11':
+    t1 = datetime.datetime(2018, 5, 1)
+    t2 = datetime.datetime(2020, 8, 1)
+else:
+    t1 = datetime.datetime(2016, 9, 1)
+    t2 = datetime.datetime(2016, 11, 1)
+file_out = f"BM_file_inventory_{t1.strftime('%Y_%m')}_{t2.strftime('%Y_%m')}_{fileType}.txt"
+
 dt_day = 1
 curr_t = t1
 delta_sec = (t2-curr_t).total_seconds()
+
 a_date = np.array([], dtype = int)
 while delta_sec > 0:
     str_date = curr_t.strftime('%Y%m%d')
@@ -53,7 +59,7 @@ while delta_sec > 0:
     a_date = np.append( a_date, int( str_date))
     curr_t += datetime.timedelta(days=dt_day)
     delta_sec = (t2-curr_t).total_seconds()
-#print( a_date)
+print( 'no. days to check for files: ', len(a_date), a_date[0:5],a_date[-5::])
 #==============================1==================================================================
 #                           get folders and sizes
 #=================================================================================================
@@ -63,16 +69,26 @@ i = 0
 for it in range( len( a_date)):
     for i_sta in range( len(l_sta)):
         sta = l_sta[i_sta]
-        curr_dir = f"{dir_main}/{fileType}/{sta}/{a_date[it]}"
+        ## account for different directory structure for CD11, mseed and sac
+        if fileType == 'CD11':
+            curr_dir = f"{dir_main}/{fileType}/{sta}/{a_date[it]}"
+            if os.path.isdir( curr_dir):
+                #dir_size = sum(os.path.getsize(f) for f in os.listdir(curr_dir) if os.path.isfile(f))
+                #print( dir_size)
+                dir_size = get_size( curr_dir)
+                print(curr_dir, dir_size)
+                mData[it,i_sta+1] = dir_size
+        elif fileType == 'mseed':
+            curr_file = f"{dir_main}/{fileType}/{sta}/{sta}_{a_date[it]}.{fileType}"
+            print( curr_file)
+            if os.path.isfile( curr_file):
+                mData[it,i_sta+1] = os.path.getsize( curr_file)
+        else: # sac
+            print( 'only CD11 and mseed implemented')
+            raise ValueError
 
-        if os.path.isdir( curr_dir):
-            #dir_size = sum(os.path.getsize(f) for f in os.listdir(curr_dir) if os.path.isfile(f))
-            #print( dir_size)
-            dir_size = get_size( curr_dir)
-            print(curr_dir, dir_size)
-            mData[it,i_sta+1] = dir_size
-            #os.path.getsize( curr_dir)
-            i += 1
+        #os.path.getsize( curr_dir)
+        i += 1
 #==============================2==================================================================
 #                           write to ASCII
 #=================================================================================================
