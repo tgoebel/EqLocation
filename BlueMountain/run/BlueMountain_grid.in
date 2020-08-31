@@ -19,6 +19,7 @@ VGTYPE P
 VGGRID  2 301 301  0.0 0.0 -3.0  .5 .5 .5  SLOW_LEN
 
 # 3D grid dimensions in km Z + down (left-handed coordinate system).
+# EMC-iasp91 model for depth 1 to 50 km
 # xOrig yOrig zOrig (float) in km relative to the geographic origin
 # 2D grid xNum=2, xOrig=yOrig=0.0  -----------------------------------------------------------------------------
 #       velocity model description
@@ -52,3 +53,15 @@ LAYER	0.45	4.23	0.00	2.43	0.00	2.7	0.00
 LAYER	0.55	4.19	0.00	2.40	0.00	2.7	0.00
 LAYER	0.65	4.27	0.00	2.47	0.00	2.7	0.00
 LAYER	0.75	4.24	0.00	2.43	0.00	2.7	0.00
+LAYER	1.00	5.80	0.00	3.36	0.00	2.7	0.00
+LAYER	5.00	5.80	0.00	3.36	0.00	2.7	0.00
+LAYER	10.00	5.80	0.00	3.36	0.00	2.7	0.00
+LAYER	15.00	5.80	0.00	3.36	0.00	2.7	0.00
+LAYER	20.00	6.50	0.00	3.75	0.00	2.7	0.00
+LAYER	25.00	6.50	0.00	3.75	0.00	2.7	0.00
+LAYER	30.00	6.50	0.00	3.75	0.00	2.7	0.00
+LAYER	35.00	8.04	0.00	4.47	0.00	2.7	0.00
+LAYER	40.00	8.04	0.00	4.47	0.00	2.7	0.00
+LAYER	45.00	8.04	0.00	4.47	0.00	2.7	0.00
+LAYER	50.00	8.04	0.00	4.48	0.00	2.7	0.00
+
