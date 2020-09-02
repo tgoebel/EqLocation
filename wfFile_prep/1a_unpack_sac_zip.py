@@ -33,7 +33,7 @@ from obspy import Trace, Stream
 #=================================================================================================
 #                           params
 #=================================================================================================
-s_end_date = '20170407'
+s_end_date = '20170816'
 #s_end_date = '20171114' #include first shut-down
 dir_in  = f"/media/tgoebel/My Passport/BMSAC_{s_end_date}"
 # for os.system and command line
@@ -44,7 +44,7 @@ dir_out_bash = dir_out
 # dir_out     = r"/media/tgoebel/Toshiba 1TB/mseed"
 # dir_out_bash= r"/media/tgoebel/Toshiba\ 1TB/mseed"
 l_sta   = [ 'BM%02d'%(i) for i in range(1, 11)]
-#l_sta   = [ 'BM07']
+l_sta   = [ 'BM%02d'%(i) for i in range(1, 10)]
 
 test_plot = False
 clean_up  = True
@@ -61,8 +61,8 @@ for sta in l_sta:
     # ==============================1==================================================================
     #                         extract all zip files in current dir
     # =================================================================================================
-    if os.path.isfile( f"{dir_in}/{curr_zip_file}"):
-       os.system(f"unzip {dir_in_bash}/{curr_zip_file} -d {dir_out_bash}")
+    #if os.path.isfile( f"{dir_in}/{curr_zip_file}"):
+    #   os.system(f"unzip {dir_in_bash}/{curr_zip_file} -d {dir_out_bash}")
 
     #==============================2==================================================================
     #                     complete files list, start and end dates
@@ -179,6 +179,5 @@ for sta in l_sta:
         if clean_up == True:
             for curr_dir in ['cal', 'cont', 'event', 'log', 'soh', 'status', 'window']:
                 os.system( f"rm -r {dir_out}/{sta}/{curr_dir}")
-
 
 
