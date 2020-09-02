@@ -34,7 +34,7 @@ def get_size(start_path = '.'):
 #=================================================================================================
 dir_main = f"/media/tgoebel/Data/seis/BlueMountain"
 dir_out  = f"{os.environ['HOME']}/projects/indSeism/BlueMountain/data/seis"
-fileType = 'CD11' # sac CD11 or mseed
+fileType = 'mseed' # sac CD11 or mseed
 l_sta = [ 'BM%02d'%(i) for i in range(1, 11)]
 print( l_sta)
 #==============================0==================================================================
@@ -45,7 +45,7 @@ if fileType == 'CD11':
     t2 = datetime.datetime(2020, 8, 1)
 else:
     t1 = datetime.datetime(2016, 9, 1)
-    t2 = datetime.datetime(2016, 11, 1)
+    t2 = datetime.datetime(2018, 1, 1)
 file_out = f"BM_file_inventory_{t1.strftime('%Y_%m')}_{t2.strftime('%Y_%m')}_{fileType}.txt"
 
 dt_day = 1
